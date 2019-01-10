@@ -61,3 +61,13 @@
     width: 550px;
     /* height: 400px; */
   }
+
+
+
+
+  .title div{
+    font-weight: bold;
+  }
+  .ant-pagination{
+    margin-right: 17px!important;
+  }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import {
     Table, Form, Icon, Input, Button, Card, message, Modal, DatePicker, TimePicker,
     InputNumber, Popconfirm, Divider
@@ -35,30 +36,33 @@ export default class EditableTable extends Component {
                 title: '初始设备号',
                 dataIndex: 'oriDeviceCode',
                 key: 'oriDeviceCode',
-                editable: true,
+                // editable: true,
                 width: "16%",
+                className: "title",
             },
             {
                 title: '设备类型',
                 dataIndex: 'deviceType',
                 key: 'deviceType',
-                editable: true,
+                // editable: true,
                 width: "16%",
+                className: "title",
             },
             {
                 title: '设备名称',
                 dataIndex: 'deviceName',
                 key: 'deviceName',
-                editable: true,
+                // editable: true,
                 width: "16%",
+                className: "title",
             },
-            {
-                title: '设备描述',
-                dataIndex: 'deviceDesc',
-                key: 'deviceDesc',
-                editable: true,
-                width: "14%",
-            },
+            // {
+            //     title: '设备描述',
+            //     dataIndex: 'deviceDesc',
+            //     key: 'deviceDesc',
+            //     // editable: true,
+            //     width: "14%",
+            // },
             // {
             //     title: '状态',
             //     dataIndex: 'status',
@@ -71,8 +75,9 @@ export default class EditableTable extends Component {
                 title: '生效时间',
                 dataIndex: 'effDate',
                 key: 'effDate',
-                editable: true,
+                // editable: true,
                 width: "16%",
+                className: "title",
             },
             // {
             //     title: '过期时间',
@@ -85,6 +90,7 @@ export default class EditableTable extends Component {
                 title: '操作',
                 dataIndex: 'operation',
                 width: "14%",
+                className: "title",
                 render: (text, record) => (
                     < span >
                         <a href="javascript:;" style={{ marginLeft: 0 }} onClick={this.edit.bind(this, record)}>编辑</a>

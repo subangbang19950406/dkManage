@@ -30,7 +30,7 @@ export default class SystemList extends React.Component {
                 title: '参数编号',
                 dataIndex: 'paramCode',
                 key: 'paramCode',
-
+                className: "title",
                 width: "20%",
             },
             // {
@@ -44,14 +44,14 @@ export default class SystemList extends React.Component {
                 title: '参数类型编号',
                 dataIndex: 'paramTypeCode',
                 key: 'paramTypeCode',
-
+                className: "title",
                 width: "20%",
             },
             {
                 title: '参数值类型',
                 dataIndex: 'valueType',
                 key: 'valueType',
-
+                className: "title",
                 width: "14%",
             },
             // {
@@ -66,23 +66,23 @@ export default class SystemList extends React.Component {
                 title: '参数名称',
                 dataIndex: 'paramName',
                 key: 'paramName',
-
+                className: "title",
                 width: "20%",
             },
             // {
             //     title: '参数描述',
             //     dataIndex: 'paramDesc',
             //     key: 'paramDesc',
-
             //     width: "16%",
             // },
             {
                 title: '操作',
                 key: 'action',
                 // width: "15%",
+                className: "title",
                 render: (text, record) => (
                     <span>
-                        <a href="javascript:;" style={{marginLeft:0}} onClick={this.edit.bind(this, record)}>编辑</a>
+                        <a href="javascript:;" style={{ marginLeft: 0 }} onClick={this.edit.bind(this, record)}>编辑</a>
                         <Modal
                             title={"编辑"}
                             visible={this.state.editVisible}
@@ -133,7 +133,7 @@ export default class SystemList extends React.Component {
                 ),
             }
         ];
-        
+
         return (
             <div>
                 <FilteTable
@@ -490,9 +490,9 @@ class AddData extends React.Component {
                     </Form.Item>
                     <Form.Item label="参数ID值" style={{ marginLeft: 30 }}>
                         {getFieldDecorator('tenantId', {
-                           initialValue: "1",
+                            initialValue: "1",
                         })(
-                            <Input style={{ width: 350 }} placeholder="请输入" disabled/>
+                            <Input style={{ width: 350 }} placeholder="请输入" disabled />
                         )}
                     </Form.Item>
                     <Form.Item label="类型编码：" style={{ marginLeft: 30 }}>
@@ -501,21 +501,21 @@ class AddData extends React.Component {
                         )}
                     </Form.Item>
                     <Form.Item label="参数类型：" style={{ marginLeft: 30 }}>
-                    {
-                        getFieldDecorator('valueType')(
-                            <Select
-                                style={{ width: 350 }}
-                                placeholder="请选择"
-                            >
-                                <Option value="A01">数值型</Option>
-                                <Option value="B01">字符串类型</Option>
-                                <Option value="C01">布尔型(T,F)</Option>
-                                <Option value="D01">时间型(日期)</Option>
-                                <Option value="D02">时间型(时间)</Option>
-                                <Option value="D03">时间型(日期+日期)</Option>
-                            </Select>
-                        )
-                    }
+                        {
+                            getFieldDecorator('valueType')(
+                                <Select
+                                    style={{ width: 350 }}
+                                    placeholder="请选择"
+                                >
+                                    <Option value="A01">数值型</Option>
+                                    <Option value="B01">字符串类型</Option>
+                                    <Option value="C01">布尔型(T,F)</Option>
+                                    <Option value="D01">时间型(日期)</Option>
+                                    <Option value="D02">时间型(时间)</Option>
+                                    <Option value="D03">时间型(日期+日期)</Option>
+                                </Select>
+                            )
+                        }
                     </Form.Item>
                     <Form.Item label="参数数值：" style={{ marginLeft: 30 }}>
                         {getFieldDecorator('paramValue')(
@@ -564,7 +564,7 @@ class AddData extends React.Component {
                         resetFields()//清空表单里的数据的            
                         this.props.hideAddModal();
                         message.success("新增成功")
-                    }else{
+                    } else {
                         message.info(res.msg)
                     }
                 })
@@ -607,10 +607,10 @@ class EditData extends React.Component {
                         )}
                     </Form.Item>
                     <Form.Item label="参数ID值：" style={{ marginLeft: 30 }}>
-                        {getFieldDecorator('tenantId',{
-                            initialValue: "1",                         
+                        {getFieldDecorator('tenantId', {
+                            initialValue: "1",
                         })(
-                            <Input style={{ width: 350 }} placeholder="请输入" disabled/>
+                            <Input style={{ width: 350 }} placeholder="请输入" disabled />
                         )}
                     </Form.Item>
                     <Form.Item label="类型编码" style={{ marginLeft: 30 }}>
@@ -670,7 +670,7 @@ class EditData extends React.Component {
                         this.props.editQuestRender()
                         // resetFields()//清空表单里的数据的            
                         this.props.hideEditModal();
-                    }else{
+                    } else {
                         message.info("参数编码已存在")
                     }
                 })

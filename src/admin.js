@@ -99,7 +99,7 @@ export default class Admin extends React.Component {
 							<p style={{ fontSize: 13, margin: 0, height: 30, lineHeight: 4, textIndent: 25 }}>房屋管理信息/房屋列表</p>
 							<div style={{ fontWeight: "bold", color: "black", fontSize: 18, height: 50, lineHeight: 3, textIndent: 25 }}>房屋列表</div>
 						</div>
-						<div style={{ padding: 20, background: '#fff' }}>
+						<div style={{ padding: 20, background: '#fff' ,overflow: "hidden"}}>
 							{this.props.children}
 						</div>
 					</Content>

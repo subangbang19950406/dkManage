@@ -19,6 +19,12 @@ export default {
                 return "时间型（时间+日期）";
         }
     },
+    leftPage(parentClass,childClass){
+        let parentDiv = document.querySelector(parentClass)
+        // let childDiv = document.querySelector(childClass)
+        parentDiv.style.transition = "all 0.2s linear"
+        parentDiv.style.marginLeft = "-106%"
+    },
     formateDate(time) {
         if (!time) return '';
         let date = new Date(time);
