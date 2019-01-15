@@ -46,7 +46,7 @@ export default class Admin extends React.Component {
 						<Menu.Item key="1" ><Link to="/admin/home"><Icon type="home" /><span>首页</span></Link></Menu.Item>
 						<SubMenu
 							key="sub1"
-							title={<span><Icon type="user" /><span>房屋信息管理</span></span>}
+							title={<span><Icon type="solution" /><span>房屋信息管理</span></span>}
 						>
 							<Menu.Item key="4"><Link to="/admin/houseInfo/houseList">房屋列表</Link> </Menu.Item>
 							<Menu.Item key="5"><Link to="/admin/houseInfo/houseAudit">房屋审核</Link> </Menu.Item>
@@ -54,25 +54,26 @@ export default class Admin extends React.Component {
 						</SubMenu>
 						<SubMenu
 							key="sub2"
-							title={<span><Icon type="team" /><span>设备信息管理</span></span>}
+							title={<span><Icon type="video-camera" /><span>设备信息管理</span></span>}
 						>
 							<Menu.Item key="6"><Link to="/admin/infoManage/listManage">设备列表管理</Link></Menu.Item>
 							<Menu.Item key="8">Team 2</Menu.Item>
 						</SubMenu>
 						<SubMenu
 							key="sub3"
-							title={<span><Icon type="team" /><span>系统管理</span></span>}
+							title={<span><Icon type="tool" /><span>系统管理</span></span>}
 						>
 							<Menu.Item key="9"><Link to="/admin/system/systemParams">系统参数列表</Link></Menu.Item>
 							<Menu.Item key="10">Team 2</Menu.Item>
 						</SubMenu>
 						<SubMenu
 							key="sub4"
-							title={<span><Icon type="team" /><span>Team</span></span>}
+							title={<span><Icon type="environment" /><span>城市管理</span></span>}
 						>
-							<Menu.Item key="11">Team 1</Menu.Item>
-							<Menu.Item key="12">Team 2</Menu.Item>
+							<Menu.Item key="11"><Link to="/admin/city/cityManage">城市管理</Link></Menu.Item>
+							<Menu.Item key="12"><Link to="/admin/city/cityState">城市状态</Link></Menu.Item>
 						</SubMenu>
+						<Menu.Item key="13"><Link to="/admin/timeJob"><Icon type="dashboard" /><span>定时任务</span></Link></Menu.Item>
 					</Menu>
 				</Sider>
 				<Layout>

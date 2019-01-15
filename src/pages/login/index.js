@@ -74,7 +74,7 @@ class Login extends Component {
                 return;
             } else {
                 console.log(values)
-                fetchPost('https://test.dongkenet.com/api/tms/1.0.0.daily/console/login', {
+                fetchPost('tms','/console/login', {
                     staffCode: values.username,
                     inputPassword: values.password,
                     remember: values.remember,
@@ -85,12 +85,12 @@ class Login extends Component {
                             localStorage.setItem('userData', JSON.stringify(rep))
                             // localStorage.clear()
                         }
-                        message.success("恭喜你,登陆成功,正在跳转......", 1, () => {
+                        message.success("恭喜你,登陆成功,正在跳转", 1, () => {
                             // history.replace('/admin/home');
                             this.props.history.push('/admin/home')
                         })
                     } else {
-                        message.error(rep.msg)
+                        message.error("用户名或密码不正确！")
                     }
 
                 })

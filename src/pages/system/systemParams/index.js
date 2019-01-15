@@ -179,7 +179,7 @@ export default class SystemList extends React.Component {
     delete(record) {
         console.log("删除行", record)
         // if()
-        fetchPost("https://test.dongkenet.com/api/tms/1.0.0.daily/sysparam/del-sysparam", {
+        fetchPost("tms","/sysparam/del-sysparam", {
             paramCode: record.paramCode,
             tenantId: record.tenantId,
         }).then(res => {
@@ -194,7 +194,7 @@ export default class SystemList extends React.Component {
     chakan(record) {
         // this.props.history.push('/admin/home')
         console.log("查看行", record)
-        fetchPost("https://test.dongkenet.com/api/tms/1.0.0.daily/sysparam/get-sysparam", {
+        fetchPost("tms","/sysparam/get-sysparam", {
             paramCode: record.paramCode,
             tenantId: record.tenantId,
         }).then(res => {
@@ -218,7 +218,7 @@ export default class SystemList extends React.Component {
     }
 
     questRender() {
-        fetchPost("https://test.dongkenet.com/api/tms/1.0.0.daily/sysparam/get-sysparam-fast", {
+        fetchPost("tms","/sysparam/get-sysparam-fast", {
             queryType: "0",
             pageInfo: {
                 pageNo: this.params.pageNo,
@@ -341,7 +341,7 @@ class FilteTable extends React.Component {
                 return
             } else {
                 if (values.queryType === "0") {
-                    fetchPost("https://test.dongkenet.com/api/tms/1.0.0.daily/sysparam/get-sysparam-fast", {
+                    fetchPost("tms","/sysparam/get-sysparam-fast", {
                         queryType: values.queryType,
                         paramCode: values.params,
                         pageInfo: {
@@ -373,7 +373,7 @@ class FilteTable extends React.Component {
                         resetFields()//清空表单里的数据的
                     })
                 } else if (values.queryType === "1") {
-                    fetchPost("https://test.dongkenet.com/api/tms/1.0.0.daily/sysparam/get-sysparam-fast", {
+                    fetchPost("tms","/get-sysparam-fast", {
                         queryType: values.queryType,
                         paramTypeCode: values.params,
                         pageInfo: {
@@ -405,7 +405,7 @@ class FilteTable extends React.Component {
                         resetFields()//清空表单里的数据的
                     })
                 } else if (values.queryType === "2") {
-                    fetchPost("https://test.dongkenet.com/api/tms/1.0.0.daily/sysparam/get-sysparam-fast", {
+                    fetchPost("tms","/sysparam/get-sysparam-fast", {
                         queryType: values.queryType,
                         paramName: values.params,
                         pageInfo: {
@@ -549,7 +549,7 @@ class AddData extends React.Component {
                 || values.paramDesc === undefined) {
                 message.error("请将各项信息输入完整")
             } else {//写接口内容            
-                fetchPost("https://test.dongkenet.com/api/tms/1.0.0.daily/sysparam/add-sysparam", {
+                fetchPost("tms","/sysparam/add-sysparam", {
                     paramCode: values.paramCode,
                     tenantId: values.tenantId,
                     paramTypeCode: values.paramTypeCode,
@@ -655,7 +655,7 @@ class EditData extends React.Component {
                 || values.paramDesc === undefined) {
                 message.error("请将各项信息输入完整")
             } else {//写接口内容            
-                fetchPost("https://test.dongkenet.com/api/tms/1.0.0.daily/sysparam/modify-sysparam", {
+                fetchPost("tms","/sysparam/modify-sysparam", {
                     paramCode: values.paramCode,
                     tenantId: values.tenantId,
                     paramTypeCode: values.paramTypeCode,

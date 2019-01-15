@@ -5,11 +5,9 @@ import {
     InputNumber, Popconfirm, Divider
 } from 'antd'
 import './index.css'
-import moment from 'moment'
 import $ from 'jquery'
 import { fetchPost } from './../../../fetch/fetch.js'
 import Untils from './../../../untils/index1.js'
-import { from } from 'rxjs';
 
 export default class EditableTable extends Component {
     constructor(props) {
@@ -157,7 +155,7 @@ export default class EditableTable extends Component {
     }
 
     questRender() {
-        fetchPost("https://test.dongkenet.com/api/bms/1.0.0.daily/device-list/query-by-page", {
+        fetchPost("bms","/device-list/query-by-page", {
             pageInfo: {
                 pageNo: this.params.pageNo,
                 // pageSize: 5
@@ -336,7 +334,7 @@ class FilteTable extends Component {
             if (values.oriDeviceCode === undefined || values.deviceType === undefined || values.deviceName === undefined) {
                 message.error("请分别输入设备编号和名称")
             } else {
-                fetchPost("https://test.dongkenet.com/api/bms/1.0.0.daily/device-list/query", {
+                fetchPost("bms","/device-list/query", {
                     oriDeviceCode: values.oriDeviceCode.trim(),
                     deviceType: values.deviceType.trim(),
                     deviceName: values.deviceName.trim(),
@@ -452,7 +450,7 @@ class AddData extends Component {
                 let effDT = Untils.dates(values.effDate) + Untils.times(values.effTime)
                 let expDT = Untils.dates(values.expDate) + Untils.times(values.expTime)
                 console.log(expDT, effDT)
-                fetchPost("https://test.dongkenet.com/api/bms/1.0.0.daily/device-list/add", {
+                fetchPost("bms","/device-list/add", {
                     oriDeviceCode: values.oriDeviceCode,
                     deviceType: values.deviceType,
                     deviceName: values.deviceName,
@@ -570,7 +568,7 @@ class EditData extends Component {
                 let effDT = Untils.dates(values.effDate) + Untils.times(values.effTime)
                 let expDT = Untils.dates(values.expDate) + Untils.times(values.expTime)
                 console.log(expDT, effDT)
-                fetchPost("https://test.dongkenet.com/api/bms/1.0.0.daily/device-list/mod", {
+                fetchPost("bms","/device-list/mod", {
                     deviceId: this.props.editRecord.deviceId,
                     oriDeviceCode: values.oriDeviceCode,
                     deviceType: values.deviceType,

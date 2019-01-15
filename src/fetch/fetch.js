@@ -5,8 +5,8 @@ export const searchToObj = (url) => {
     if (url.indexOf("?") !== -1) {
         let str = url.substr(1);
         let strs = str.split("&");
-        for(let i = 0; i < strs.length; i ++) {
-            theRequest[strs[i].split("=")[0]]= decodeURIComponent(strs[i].split("=")[1]);
+        for (let i = 0; i < strs.length; i++) {
+            theRequest[strs[i].split("=")[0]] = decodeURIComponent(strs[i].split("=")[1]);
         }
     }
     return theRequest;
@@ -18,33 +18,40 @@ export const objToSearch = function (obj) {
     for (let item in obj) {
         newSearch = `${newSearch}${item}=${obj[item]}&`;
     }
-    return newSearch.substring(0,newSearch.length-1);//去掉最后的&
+    return newSearch.substring(0, newSearch.length - 1);//去掉最后的&
 };
 
 export const fetchGet = (url, fetchPrm) => {
     const searchStr = objToSearch(fetchPrm);
-    return fetch(url+searchStr).then((response) => {
+    return fetch(url + searchStr).then((response) => {
         if (response.status === 200) {
             return response.json();
         }
     })
 }
-
-export const fetchPost = (url, fetchPrm) => {
+export const fetchPost = (ms, url, fetchPrm) => {
     let loading;
-    if (fetchPrm.isShowLoading !== false){
+    if (fetchPrm.isShowLoading !== false) {
         loading = document.getElementById('ajaxLoading');
         loading.style.display = 'block';
     }
-    return fetch(url, {
+    let bms = "https://test.dongkenet.com/api/bms/1.0.0.daily"
+    let tms = "https://test.dongkenet.com/api/tms/1.0.0.daily"
+    let urls = ""
+    if (ms === "bms") {
+        urls = bms + url
+    } else if (ms === "tms") {
+        urls = tms + url
+    }
+    return fetch(urls, {
         method: 'POST',
         body: JSON.stringify(fetchPrm),
         credentials: 'include',//请求时添加cookie
         headers: new Headers({
             'Content-Type': 'application/json', // 指定提交方式为表单提交
         }),
-        xhrFields:{
-            withCredentials:true
+        xhrFields: {
+            withCredentials: true
         }
     }).then((response) => {
         if (fetchPrm.isShowLoading !== false) {
@@ -53,7 +60,7 @@ export const fetchPost = (url, fetchPrm) => {
         }
         if (response.status === 200) {
             return response.json();
-        }else if(response.status === 401){
+        } else if (response.status === 401) {
             window.location.replace("http://test.dongkenet.com:18806")
         }
     });

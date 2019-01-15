@@ -325,7 +325,7 @@ class ShenHe extends React.Component {
                     if (values.number !== undefined && values.textarea !== undefined &&
                         values.number !== "" && values.textarea !== ""
                     ) {
-                        fetchPost("https://test.dongkenet.com/api/bms/1.0.0.daily/house-verify/approval", {
+                        fetchPost("bms","/house-verify/approval", {
                             houseVerifyId: this.props.shenheRecords.houseVerifyId,
                             houseId: this.props.shenheRecords.houseId,
                             reason: values.textarea,
@@ -360,7 +360,7 @@ class ShenHe extends React.Component {
 
                 } else if (values.radio === 2) {//房屋审核不通过,房产证号选填
                     if (values.textarea !== undefined && values.textarea !== "") {
-                        fetchPost("https://test.dongkenet.com/api/bms/1.0.0.daily/house-verify/reject", {
+                        fetchPost("bms","/house-verify/reject", {
                             houseVerifyId: this.props.shenheRecords.houseVerifyId,
                             houseId: this.props.shenheRecords.houseId,
                             reason: values.textarea,
@@ -501,7 +501,6 @@ class HouseList extends React.Component {
                         </FormItem>
                         <FormItem label="房屋状态：" style={{ marginLeft: 30 }}>
                             {
-
                                 getFieldDecorator('status', {
                                     initialValue: "00A",
                                     rules: [{ required: true, whitespace: true, message: "请选择房屋状态" }],
@@ -550,6 +549,7 @@ class HouseList extends React.Component {
     }
 
     handleSearch() {
+        console.log(this.props)
         const { resetFields } = this.props.form;
         this.props.form.validateFields((err, values) => {
             if (err) {
@@ -557,14 +557,14 @@ class HouseList extends React.Component {
             } else {
                 console.log(values)
                
-                fetchPost("https://test.dongkenet.com/api/bms/1.0.0.daily/house-verify/query-by-page", {
+                fetchPost("bms","/house-verify/query-by-page", {
                     status: values.status,
                     pageInfo: {
                         pageNo: 1,
                         pageSize: this.state.total,
                     }
                 }).then(res => {
-                    console.log("查询得到的数据", res)
+                    console.log("查询得到的数据", res,this.props)
                     if (res.code === "0") {
                         let dataSearchList = res.data.rows.map((item, index) => {
                             item.key = index
@@ -612,7 +612,7 @@ class HouseList extends React.Component {
     handleshenhe(record) {
         Untils.leftPage(".content")
 
-        fetchPost("https://test.dongkenet.com/api/bms/1.0.0.daily/house-verify/query", {
+        fetchPost("bms","/house-verify/query", {
             houseId: record.houseId,
             houseVerifyId: record.houseVerifyId,
         }).then(res => {
@@ -670,7 +670,7 @@ class HouseList extends React.Component {
     handleChakanVitory(record) {
         Untils.leftPage(".content")
         console.log("点击通过查看那一行的数据：", record)
-        fetchPost("https://test.dongkenet.com/api/bms/1.0.0.daily/house-verify/query", {
+        fetchPost("bms","/house-verify/query", {
             houseId: record.houseId,
             houseVerifyId: record.houseVerifyId,
         }).then(res => {
@@ -727,7 +727,7 @@ class HouseList extends React.Component {
     handleChakanDefeat(record) {
         Untils.leftPage(".content")
         console.log("点击不通过查看那一行的数据：", record)
-        fetchPost("https://test.dongkenet.com/api/bms/1.0.0.daily/house-verify/query", {
+        fetchPost("bms","/house-verify/query", {
             houseId: record.houseId,
             houseVerifyId: record.houseVerifyId,
         }).then(res => {
@@ -783,7 +783,7 @@ class HouseList extends React.Component {
     }
 
     questRender = () => {
-        fetchPost("https://test.dongkenet.com/api/bms/1.0.0.daily/house-verify/query-by-page", {
+        fetchPost("bms","/house-verify/query-by-page", {
             "pageInfo": {
                 pageNo: this.params.pageNo,
                 // pageSize: 7  //默认是10
